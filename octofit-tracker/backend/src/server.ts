@@ -21,6 +21,15 @@ export const apiBaseUrl = codespaceName
   
 app.use(express.json());
 
+app.get('/', (_request, response) => {
+  response.json({
+    name: 'OctoFit Tracker API',
+    status: 'ok',
+    health: `${apiBaseUrl}/api/health`,
+    endpoints: ['/api/users/', '/api/teams/', '/api/activities/', '/api/leaderboard/', '/api/workouts/'],
+  });
+});
+
 function registerResourceRoutes(
   path: string,
   model: Model<ResourceDocument>,
