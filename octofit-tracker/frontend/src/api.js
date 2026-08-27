@@ -17,7 +17,7 @@ export function collectionFromResponse(payload) {
 
 export async function fetchCollection(endpoint) {
   const path = endpoint.startsWith('/api/') ? endpoint : `/api/${endpoint}/`;
-  const response = await fetch(`${apiBaseUrl}${path}`);
+  const response = await fetch(endpoint.startsWith('http') ? endpoint : `${apiBaseUrl}${path}`);
   if (!response.ok) {
     throw new Error(`Unable to load ${path}`);
   }
