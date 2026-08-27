@@ -9,6 +9,9 @@ export function collectionFromResponse(payload) {
   if (Array.isArray(payload.results)) return payload.results;
   if (Array.isArray(payload.data)) return payload.data;
   if (Array.isArray(payload.items)) return payload.items;
+  if (payload.data && typeof payload.data === 'object') {
+    return collectionFromResponse(payload.data);
+  }
   return [];
 }
 
