@@ -15,10 +15,11 @@ export function collectionFromResponse(payload) {
   return [];
 }
 
-export async function fetchCollection(component) {
-  const response = await fetch(`${apiBaseUrl}/api/${component}/`);
+export async function fetchCollection(endpoint) {
+  const path = endpoint.startsWith('/api/') ? endpoint : `/api/${endpoint}/`;
+  const response = await fetch(`${apiBaseUrl}${path}`);
   if (!response.ok) {
-    throw new Error(`Unable to load ${component}`);
+    throw new Error(`Unable to load ${path}`);
   }
   return collectionFromResponse(await response.json());
 }

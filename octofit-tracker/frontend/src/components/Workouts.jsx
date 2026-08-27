@@ -6,7 +6,7 @@ function Workouts() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    fetchCollection('workouts').then(setWorkouts).catch((reason) => setError(reason.message));
+    fetchCollection('/api/workouts/').then(setWorkouts).catch((reason) => setError(reason.message));
   }, []);
 
   return (

@@ -6,7 +6,7 @@ function Users() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    fetchCollection('users').then(setUsers).catch((reason) => setError(reason.message));
+    fetchCollection('/api/users/').then(setUsers).catch((reason) => setError(reason.message));
   }, []);
 
   return (
